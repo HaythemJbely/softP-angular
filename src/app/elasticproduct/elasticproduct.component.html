@@ -1,0 +1,76 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+
+
+<div class="container">
+  <hr>
+
+  <div class="card bg-light">
+    <article class="card-body mx-auto" style="max-width: 400px;">
+      <h4 class="card-title mt-3 text-center">Add Elastic Product</h4>
+      <form [formGroup]="elasticProductForm">
+        <div class="form-group input-group">
+          <input formControlName="productName" class="form-control" placeholder="Product name" type="text">
+        </div>
+        <div class="form-group input-group">
+
+          <input formControlName="productDescription" class="form-control" placeholder="Product description"
+            type="text">
+        </div>
+        <div class="form-group input-group">
+
+          <input formControlName="productPrice" class="form-control" placeholder="Product price" type="number">
+        </div>
+        <div class="form-group input-group">
+
+          <input formControlName="quantity" class="form-control" placeholder="Quantity" type="number">
+        </div>
+        <div class="form-group input-group">
+
+          <input formControlName="category" class="form-control" placeholder="Product category" type="text">
+        </div>
+        <div class="form-group input-group">
+
+          <input formControlName="manufacturer" class="form-control" placeholder="Manufacturer" type="text">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-dark btn-block" (click)="saveElasticProduct()"> Add Elastic Product
+          </button>
+        </div>
+      </form>
+    </article>
+  </div>
+
+</div>
+<hr>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Product Name</th>
+      <th>Product Description</th>
+      <th>Product Price</th>
+      <th>Quantity</th>
+      <th>Category</th>
+      <th>Manufacturer</th>
+      <th>Edit / Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of elasticProducts">
+      <td>{{ product.productName }}</td>
+      <td>{{ product.productDescription }}</td>
+      <td>{{ product.productPrice }}</td>
+      <td>{{ product.quantity }}</td>
+      <td>{{ product.sportsCategory }}</td>
+      <td>{{ product.manufacturer }}</td>
+      <td>
+        <button type="button" class="btn btn-info btn-sm">Edit</button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="deleteElasricProduct(product.id!)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -4,6 +4,9 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
 import { RegisterComponent } from './register/register.component';
+import { ElasticproductComponent } from './elasticproduct/elasticproduct.component';
+import { AuthGuard } from './helpers/auth.guard';
+import { Role } from './models/Role';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -11,9 +14,10 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: 'home', component: HomeComponent },
+      { path: 'home', component: HomeComponent},
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
+      { path: 'elasticProduct', component: ElasticproductComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin,Role.User]}},
     ]
   }
 ];

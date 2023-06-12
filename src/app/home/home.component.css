@@ -5,12 +5,13 @@
   padding-left: 0%;
   margin-right: 4%;
   padding-right: 0%;
+  margin-top: 8%;
 }
 
 .buttonText {
   text-transform: none;
   font-size: 20px;
-  font-family: "montserrat";
+  font-family: "montserrat", sans-serif;
   border-radius: 8px;
   background-color: #4ecdc4;
   position: relative;
@@ -26,10 +27,7 @@
 
 .progress {
   background-color: white;
-}
-
-.container {
-  margin-top: 8%;
+  margin-top: 10px;
 }
 
 .pt-10 {
@@ -76,10 +74,6 @@
 
 .subtitle {
   font-size: 18pt;
-}
-
-.progress {
-  margin-top: 10px;
 }
 
 .progress-bar {

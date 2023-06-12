@@ -61,14 +61,18 @@ export class ElasticproductComponent implements OnInit {
     })
   }
 
-  deleteElasricProduct(id : string): void {
-    this.elasticProductService.deleteElasticproduct(id).subscribe(()=> {
-      console.log('Elastic product deleted successfully');
-      this.findAllElasticProducts();
-    }, error => {
-      console.error('An Error occurs when deleting Elastic product',error);
+  deleteElasticProduct(id: string): void {
+    this.elasticProductService.deleteElasticproduct(id).subscribe({
+      next: () => {
+        console.log('Elastic product deleted successfully');
+        this.findAllElasticProducts();
+      },
+      error: (error) => {
+        console.error('An error occurred when deleting Elastic product', error);
+      }
     });
   }
+  
 
   cancelEdit(): void {
     this.editing = false;

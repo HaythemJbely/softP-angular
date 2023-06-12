@@ -8,6 +8,10 @@ import { environment } from 'src/environment/environment';
 export class UserService {
     constructor(private http: HttpClient) { }
 
+    /**
+     * Retrieves all users from the server.
+     * @returns {Observable<User[]>} An observable that emits an array of User objects.
+     */
     getAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/user/getAllUsers`);
     }

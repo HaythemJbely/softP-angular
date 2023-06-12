@@ -8,6 +8,7 @@ import { ElasticproductComponent } from './elasticproduct/elasticproduct.compone
 import { AuthGuard } from './helpers/auth.guard';
 import { Role } from './models/Role';
 import { KibanaMetricsComponent } from './kibana-metrics/kibana-metrics.component';
+import { SwaggerComponent } from './swagger/swagger.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: 'elasticProduct', component: ElasticproductComponent , canActivate: [AuthGuard] , data: { roles: [Role.User]}},
       { path: 'kibana', component: KibanaMetricsComponent , canActivate: [AuthGuard] , data: { roles: [Role.Admin]}},
+      { path: 'swagger', component: SwaggerComponent ,  canActivate: [AuthGuard] , data: { roles: [Role.Admin]} }
     ]
   }
 ];

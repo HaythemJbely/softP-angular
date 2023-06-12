@@ -15,6 +15,7 @@ import { ElasticproductComponent } from './elasticproduct/elasticproduct.compone
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { KibanaMetricsComponent } from './kibana-metrics/kibana-metrics.component';
+import { SwaggerComponent } from './swagger/swagger.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { KibanaMetricsComponent } from './kibana-metrics/kibana-metrics.componen
     UserComponent,
     RegisterComponent,
     ElasticproductComponent,
-    KibanaMetricsComponent
+    KibanaMetricsComponent,
+    SwaggerComponent
   ],
   imports: [
     BrowserModule,

@@ -13,15 +13,19 @@ export class ElasticProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  saveElasticProduct(elasticProduct : ElasticProduct) : Observable<ElasticProduct>{
-    return this.httpClient.post<ElasticProduct>(this.resourceUrl ,elasticProduct);
+  saveElasticProduct(elasticProduct: ElasticProduct): Observable<ElasticProduct> {
+    return this.httpClient.post<ElasticProduct>(this.resourceUrl, elasticProduct);
   }
 
-  findAll(){
+  findAll() {
     return this.httpClient.get<ElasticProduct[]>(this.resourceUrl);
   }
+  updateElasticProduct(id: string, elasticProduct: ElasticProduct): Observable<ElasticProduct> {
+    return this.httpClient.put<ElasticProduct>(`${this.resourceUrl}/${id}`, elasticProduct);
+  }
 
-  deleteElasticproduct(id : string) : Observable<void> {
+  deleteElasticproduct(id: string): Observable<void> {
     return this.httpClient.delete<void>(`${this.resourceUrl}/${id}`);
   }
+
 }

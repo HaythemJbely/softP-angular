@@ -13,6 +13,9 @@ export class ElasticproductComponent implements OnInit {
   elasticProducts: ElasticProduct[] = [];
   elasticProductForm: FormGroup;
   elasticProduct: ElasticProduct = new ElasticProduct();
+  editing: boolean = false;
+  elasticProductId?: string;
+
 
   constructor(
     private elasticProductService: ElasticProductService,
@@ -66,4 +69,31 @@ export class ElasticproductComponent implements OnInit {
       console.error('An Error occurs when deleting Elastic product',error);
     });
   }
+
+  cancelEdit(): void {
+    this.editing = false;
+    this.elasticProductForm.reset();
+  }
+  
+  updateElasticProduct(): void {
+    const updatedProduct: ElasticProduct = this.getElasticProductForm();
+    this.elasticProductService.updateElasticProduct(this.elasticProductId!, updatedProduct).subscribe(res => {
+      this.cancelEdit();
+      this.findAllElasticProducts();
+    });
+  }
+  editElasticProduct(product: ElasticProduct): void {
+    this.editing = true;
+    this.elasticProductId = product.id;
+    this.elasticProductForm.patchValue({
+      productName: product.productName,
+      productDescription: product.productDescription,
+      productPrice: product.productPrice,
+      quantity: product.quantity,
+      category: product.sportsCategory,
+      manufacturer: product.manufacturer
+    });
+  }
+  
+  
 }

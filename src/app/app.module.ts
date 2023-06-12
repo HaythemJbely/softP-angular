@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ElasticproductComponent } from './elasticproduct/elasticproduct.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { KibanaMetricsComponent } from './kibana-metrics/kibana-metrics.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     LayoutComponent,
     UserComponent,
     RegisterComponent,
-    ElasticproductComponent
+    ElasticproductComponent,
+    KibanaMetricsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
+
 .container {
   width: 100%;
   padding-left: 0%;
@@ -22,7 +23,77 @@
 .landingText {
   margin-top: 5%;
 }
+
 .progress {
   background-color: white;
 }
 
+.container {
+  margin-top: 8%;
+}
+
+.pt-10 {
+  padding-top: 10px;
+}
+
+.row {
+  display: flex;
+}
+
+.col {
+  flex: 1;
+}
+
+.col-sm {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.ml-3 {
+  margin-left: 3px;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.title {
+  font-size: 28pt;
+}
+
+.subtitle {
+  font-size: 18pt;
+}
+
+.progress {
+  margin-top: 10px;
+}
+
+.progress-bar {
+  height: 20px;
+}
+
+.warning {
+  background-color: #ffc107;
+}
+
+.success {
+  background-color: #28a745;
+}
+
+.danger {
+  background-color: #dc3545;
+}

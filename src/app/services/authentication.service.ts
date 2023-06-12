@@ -31,16 +31,13 @@ export class AuthenticationService {
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
-                localStorage.setItem('isLoggedIn', 'true');
                 this.userSubject.next(user);
-                window.location.reload();
                 return user;
             }));
     }
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.setItem('isLoggedIn', 'false'); // Update the value to 'false'
         localStorage.removeItem('user');
         this.userSubject.next(null);
         this.router.navigate(['/']);

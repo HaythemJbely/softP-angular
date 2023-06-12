@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../services/authentication.service';
 import { LoginRequest } from '../models/LoginRequest';
+import { Role } from '../models/Role';
 
 
 @Component({ templateUrl: 'login.component.html' })
@@ -33,7 +34,6 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 
     getloginRequestForm(): LoginRequest {
@@ -58,9 +58,18 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe({
                 next: () => {
-                    // get return url from route parameters or default to '/'
-                    const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/elasticProduct';
-                    this.router.navigate([returnUrl]);
+                    // Check the role of the user
+                    const userRole = this.authenticationService.userValue!.roles;
+                    
+                    // Navigate based on the user role
+                    if (userRole?.includes(Role.Admin)) {
+                        this.router.navigate(['/kibana']);
+                    } else if (userRole?.includes(Role.User)) {
+                        this.router.navigate(['/elasticProduct']);
+                    } else {
+                        // Handle the case if the user role is not recognized
+                        this.error = 'Invalid user role';
+                    }
                 },
                 error: error => {
                     this.error = error;

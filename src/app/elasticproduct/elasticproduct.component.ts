@@ -15,6 +15,7 @@ export class ElasticproductComponent implements OnInit {
   elasticProduct: ElasticProduct = new ElasticProduct();
   editing: boolean = false;
   elasticProductId?: string;
+  searchQuery?: string;
 
 
   constructor(
@@ -52,9 +53,9 @@ export class ElasticproductComponent implements OnInit {
     }
   }
 
-  saveElasticProduct():void {
+  saveElasticProduct(): void {
     this.elasticProduct = this.getElasticProductForm();
-    this.elasticProductService.saveElasticProduct(this.elasticProduct).subscribe(res =>{
+    this.elasticProductService.saveElasticProduct(this.elasticProduct).subscribe(res => {
       this.elasticProduct = res;
       this.findAllElasticProducts();
       this.elasticProductForm.reset();
@@ -72,13 +73,13 @@ export class ElasticproductComponent implements OnInit {
       }
     });
   }
-  
+
 
   cancelEdit(): void {
     this.editing = false;
     this.elasticProductForm.reset();
   }
-  
+
   updateElasticProduct(): void {
     const updatedProduct: ElasticProduct = this.getElasticProductForm();
     this.elasticProductService.updateElasticProduct(this.elasticProductId!, updatedProduct).subscribe(res => {
@@ -98,6 +99,23 @@ export class ElasticproductComponent implements OnInit {
       manufacturer: product.manufacturer
     });
   }
-  
-  
+
+  searchProducts(): void {
+    if (this.searchQuery && this.searchQuery.trim() !== '') {
+      this.elasticProductService.searchProducts(this.searchQuery).subscribe(res => {
+        this.elasticProducts = res;
+      });
+    } else {
+      this.findAllElasticProducts();
+    }
+  }
+
+  onSearchInput(): void {
+    if (!this.searchQuery || this.searchQuery.trim() === '') {
+      this.findAllElasticProducts();
+    }
+  }
+
+
+
 }

@@ -10,7 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LayoutComponent } from './layout/layout.component';
 import { UserComponent } from './user/user.component';
 import { RegisterComponent } from './register/register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ElasticproductComponent } from './elasticproduct/elasticproduct.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
@@ -34,7 +34,8 @@ import { SwaggerComponent } from './swagger/swagger.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

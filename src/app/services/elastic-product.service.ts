@@ -50,4 +50,14 @@ export class ElasticProductService {
     return this.httpClient.delete<void>(`${this.resourceUrl}/${id}`);
   }
 
+  /**
+ * Searches for ElasticProduct objects based on the provided query.
+ * @param {string} query - The search query.
+ * @returns {Observable<ElasticProduct[]>} An observable that emits an array of ElasticProduct objects.
+ */
+  searchProducts(query: string): Observable<ElasticProduct[]> {
+    const searchUrl = `${this.resourceUrl}/search?query=${query}`;
+    return this.httpClient.get<ElasticProduct[]>(searchUrl);
+  }
+
 }

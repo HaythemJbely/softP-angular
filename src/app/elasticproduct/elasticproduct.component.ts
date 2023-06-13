@@ -110,7 +110,7 @@ export class ElasticproductComponent implements OnInit {
     }
   }
 
-  onSearchInput(): void {
+    onSearchInput(): void {
     if (!this.searchQuery || this.searchQuery.trim() === '') {
       this.findAllElasticProducts();
     }

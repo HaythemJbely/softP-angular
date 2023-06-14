@@ -18,17 +18,27 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-12">
-          <h1 class="text-center mt-4">Welcome {{username}} : Enjoy Our App !</h1>
-      </div>
+    <div class="col-12">
+      <h1 class="text-center mt-4">Welcome {{username}} : Enjoy Our App !</h1>
+    </div>
+  </div>
+</div>
+<br>
+<!-- Button to toggle the form -->
+<div class="container">
+  <div class="row">
+    <div class="text-center mb-3">
+      <button class="btn btn-dark" (click)="toggleProductForm()">Add New Elastic Product</button>
+    </div>
   </div>
 </div>
 
 <div class="container">
   <hr>
-  <div class="card bg-light">
+  <div class="card bg-light" *ngIf="showProductForm">
     <article class="card-body mx-auto" style="max-width: 400px;">
-      <h4 class="card-title mt-3 text-center">Add Elastic Product</h4>
+      <h4 class="card-title mt-3 text-center" *ngIf="label">Add Elastic Product</h4>
+      <h4 class="card-title mt-3 text-center" *ngIf="!label">Update Elastic Product</h4>
       <form [formGroup]="elasticProductForm">
         <div class="form-group row">
           <label for="productName" class="col-sm-4 col-form-label">Product name:</label>
@@ -72,8 +82,8 @@
           </div>
         </div>
         <div class="form-group">
-          <button *ngIf="!editing" type="submit" class="btn btn-dark btn-block" (click)="saveElasticProduct()">Add
-            Elastic Product</button>
+          <button *ngIf="!editing" type="submit" class="btn btn-dark btn-block" (click)="saveElasticProduct()">Add</button>
+            <button *ngIf="!editing" type="submit" class="btn btn-dark btn-block" (click)="cancelAdd()">Cancel</button>
           <button *ngIf="editing" type="button" class="btn btn-primary btn-block"
             (click)="updateElasticProduct()">Update Elastic Product</button>
           <button *ngIf="editing" type="button" class="btn btn-secondary btn-block"

@@ -17,6 +17,8 @@ export class ElasticproductComponent implements OnInit {
   elasticProductId?: string;
   searchQuery?: string;
   username?: string;
+  showProductForm = false;
+  label = false;
 
 
   constructor(
@@ -34,7 +36,7 @@ export class ElasticproductComponent implements OnInit {
   }
   ngOnInit(): void {
     const userJson = window.localStorage.getItem('user');
-    if(userJson){
+    if (userJson) {
       const user = JSON.parse(userJson);
       this.username = user.username;
     }
@@ -95,6 +97,8 @@ export class ElasticproductComponent implements OnInit {
   }
   editElasticProduct(product: ElasticProduct): void {
     this.editing = true;
+    this.showProductForm = true;
+    this.label = false;
     this.elasticProductId = product.id;
     this.elasticProductForm.patchValue({
       productName: product.productName,
@@ -116,10 +120,20 @@ export class ElasticproductComponent implements OnInit {
     }
   }
 
-    onSearchInput(): void {
+  onSearchInput(): void {
     if (!this.searchQuery || this.searchQuery.trim() === '') {
       this.findAllElasticProducts();
     }
+  }
+
+  toggleProductForm() {
+    this.label = true;
+    this.showProductForm = !this.showProductForm;
+  }
+
+  cancelAdd(){
+    this.showProductForm = false;
+    this.elasticProductForm.reset();
   }
 
 

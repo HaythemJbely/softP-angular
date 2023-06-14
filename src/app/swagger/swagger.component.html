@@ -1,1 +1,19 @@
-<div id="swagger-ui"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mt-4">Welcome {{username}} to Swagger API Documentation</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button id="redirect-btn" class="btn btn-default fixed-button" (click)="redirectToKibana()">Kibana
+                <img src="assets/img/kibana_icon.png" alt="Kibana Icon" class="kibana">
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div id="swagger-ui"></div>
+        </div>
+    </div>
+</div>

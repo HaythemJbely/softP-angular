@@ -1,7 +1,16 @@
 .iframe-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.fixed-button {
+  position: fixed;
+  top: 10%;
+  left: 1%;
+  width: 10%;
+}
+.swagger {
+  width: 25%;
+}

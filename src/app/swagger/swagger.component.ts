@@ -9,8 +9,10 @@ declare const SwaggerUIBundle: any;
   styleUrls: ['./swagger.component.css']
 })
 export class SwaggerComponent implements OnInit {
-  constructor(private http: HttpClient) {}
-  
+  username?: string;
+
+  constructor(private http: HttpClient) { }
+
   ngOnInit(): void {
     this.http.get('http://localhost:8080/v2/api-docs').subscribe((swaggerSpec: any) => {
       const ui = SwaggerUIBundle({
@@ -25,5 +27,14 @@ export class SwaggerComponent implements OnInit {
         operationsSorter: 'alpha'
       });
     });
+
+    const userJson = window.localStorage.getItem('user');
+    if(userJson){
+      const user = JSON.parse(userJson);
+      this.username = user.username;
+    }
+  }
+  redirectToKibana() {
+    window.location.href = '/kibana'
   }
 }

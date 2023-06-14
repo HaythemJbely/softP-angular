@@ -16,6 +16,7 @@ export class ElasticproductComponent implements OnInit {
   editing: boolean = false;
   elasticProductId?: string;
   searchQuery?: string;
+  username?: string;
 
 
   constructor(
@@ -32,6 +33,11 @@ export class ElasticproductComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+    const userJson = window.localStorage.getItem('user');
+    if(userJson){
+      const user = JSON.parse(userJson);
+      this.username = user.username;
+    }
     this.findAllElasticProducts();
   }
 

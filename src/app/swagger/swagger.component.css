@@ -1,0 +1,9 @@
+.fixed-button {
+    position: fixed;
+    top: 10%;
+    left: 1%;
+    width: 10%;
+  }
+  .kibana {
+    width: 25%;
+  }
